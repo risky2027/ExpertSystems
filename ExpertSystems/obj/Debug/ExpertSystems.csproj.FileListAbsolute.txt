@@ -1,0 +1,16 @@
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\ExpertSystems.exe.config
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\ExpertSystems.exe
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\ExpertSystems.pdb
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\EntityFramework.dll
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\EntityFramework.xml
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.csprojAssemblyReference.cache
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.AddJournalForm.resources
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.Form1.resources
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.Properties.Resources.resources
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.csproj.GenerateResource.cache
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.csproj.CoreCompileInputs.cache
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.csproj.CopyComplete
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.exe
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.pdb
