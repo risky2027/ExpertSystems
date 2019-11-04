@@ -24,11 +24,14 @@ namespace ExpertSystems
             dataGridView1.DataSource = db.Journals.Local.ToBindingList();
 
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Суммарное число цитирований журнала в РИНЦ";
-            dataGridView1.Columns[2].HeaderText = "Среднее число статей в выпуске";
-            dataGridView1.Columns[3].HeaderText = "Средняя оценка по результатам общественной экспертизы";
-            dataGridView1.Columns[4].HeaderText = "Показатель журнала в рейтинге SCIENCE INDEX";
-            dataGridView1.Columns[5].HeaderText = "Средний индекс Хирша авторов";
+            dataGridView1.Columns[1].HeaderText = "Название журнала";
+            dataGridView1.Columns[2].HeaderText = "Суммарное число цитирований журнала в РИНЦ";
+            dataGridView1.Columns[3].HeaderText = "Общее число статей из журнала";
+            dataGridView1.Columns[4].HeaderText = "Среднее число статей в выпуске";
+            dataGridView1.Columns[5].HeaderText = "Средняя оценка по результатам общественной экспертизы";
+            dataGridView1.Columns[6].HeaderText = "Показатель журнала в рейтинге SCIENCE INDEX";
+            dataGridView1.Columns[7].HeaderText = "Место журнала в рейтинге SCIENCE INDEX";
+            dataGridView1.Columns[8].HeaderText = "Место журнала в рейтинге по алгоритму";
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -43,16 +46,23 @@ namespace ExpertSystems
 
             int num = 0;
             double k = 0;
-            if (Int32.TryParse(addJFrom.textBox1.Text, out num))
+
+            journal.NameOfJournal = addJFrom.textBox1.Text;
+            if (Int32.TryParse(addJFrom.textBox2.Text, out num))
                 journal.SumNumbersOfCitations = num;
-            if (Double.TryParse(addJFrom.textBox2.Text, out k))
-                journal.AverageNumbersOfArticles = k;
-            if (Double.TryParse(addJFrom.textBox3.Text, out k))
-                journal.AverageMarkOfPublicExpertise = k;
+            if (Int32.TryParse(addJFrom.textBox3.Text, out num))
+                journal.SumNumbersOfArticles = num;
             if (Double.TryParse(addJFrom.textBox4.Text, out k))
-                journal.IndicatorInRating = k;
+                journal.AverageNumbersOfArticles = k;
             if (Double.TryParse(addJFrom.textBox5.Text, out k))
-                journal.AverageIndexHirsh = k;
+                journal.AverageMarkOfPublicExpertise = k;
+            if (Double.TryParse(addJFrom.textBox6.Text, out k))
+                journal.IndicatorInRating = k;
+            if (Double.TryParse(addJFrom.textBox7.Text, out k))
+                journal.PositionInScienceIndex = k;
+
+            journal.PositionInAlgorithm = Int32.Parse(addJFrom.textBox2.Text) / Double.Parse(addJFrom.textBox4.Text) /
+                Double.Parse(addJFrom.textBox3.Text) + 10 * Double.Parse(addJFrom.textBox5.Text) + Double.Parse(addJFrom.textBox6.Text);
 
             db.Journals.Add(journal);
             db.SaveChanges();
@@ -74,11 +84,13 @@ namespace ExpertSystems
 
                 AddJournalForm addJFrom = new AddJournalForm();
 
-                addJFrom.textBox1.Text = journal.SumNumbersOfCitations.ToString();
-                addJFrom.textBox2.Text = journal.AverageNumbersOfArticles.ToString();
-                addJFrom.textBox3.Text = journal.AverageMarkOfPublicExpertise.ToString();
-                addJFrom.textBox4.Text = journal.IndicatorInRating.ToString();
-                addJFrom.textBox5.Text = journal.AverageIndexHirsh.ToString();
+                addJFrom.textBox1.Text = journal.NameOfJournal.ToString();
+                addJFrom.textBox2.Text = journal.SumNumbersOfCitations.ToString();
+                addJFrom.textBox3.Text = journal.SumNumbersOfArticles.ToString();
+                addJFrom.textBox4.Text = journal.AverageNumbersOfArticles.ToString();
+                addJFrom.textBox5.Text = journal.AverageMarkOfPublicExpertise.ToString();
+                addJFrom.textBox6.Text = journal.IndicatorInRating.ToString();
+                addJFrom.textBox7.Text = journal.PositionInScienceIndex.ToString();
 
                 DialogResult result = addJFrom.ShowDialog(this);
 
@@ -87,16 +99,23 @@ namespace ExpertSystems
 
                 int num = 0;
                 double k = 0;
-                if (Int32.TryParse(addJFrom.textBox1.Text, out num))
+
+                journal.NameOfJournal = addJFrom.textBox1.Text;
+                if (Int32.TryParse(addJFrom.textBox2.Text, out num))
                     journal.SumNumbersOfCitations = num;
-                if (Double.TryParse(addJFrom.textBox2.Text, out k))
-                    journal.AverageNumbersOfArticles = k;
-                if (Double.TryParse(addJFrom.textBox3.Text, out k))
-                    journal.AverageMarkOfPublicExpertise = k;
+                if (Int32.TryParse(addJFrom.textBox3.Text, out num))
+                    journal.SumNumbersOfArticles = num;
                 if (Double.TryParse(addJFrom.textBox4.Text, out k))
-                    journal.IndicatorInRating = k;
+                    journal.AverageNumbersOfArticles = k;
                 if (Double.TryParse(addJFrom.textBox5.Text, out k))
-                    journal.AverageIndexHirsh = k;
+                    journal.AverageMarkOfPublicExpertise = k;
+                if (Double.TryParse(addJFrom.textBox6.Text, out k))
+                    journal.IndicatorInRating = k;
+                if (Double.TryParse(addJFrom.textBox7.Text, out k))
+                    journal.PositionInScienceIndex = k;
+
+                journal.PositionInAlgorithm = Int32.Parse(addJFrom.textBox2.Text) / Double.Parse(addJFrom.textBox4.Text) /
+                    Double.Parse(addJFrom.textBox3.Text) + 10 * Double.Parse(addJFrom.textBox5.Text) + Double.Parse(addJFrom.textBox6.Text);
 
                 db.SaveChanges();
                 dataGridView1.Refresh(); // обновляем грид
