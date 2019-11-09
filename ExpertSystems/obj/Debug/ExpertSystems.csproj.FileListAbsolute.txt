@@ -14,3 +14,8 @@ C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.
 C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.csproj.CopyComplete
 C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.exe
 C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\obj\Debug\ExpertSystems.pdb
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\MoreLinq.dll
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\System.ValueTuple.dll
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\MoreLinq.pdb
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\MoreLinq.xml
+C:\Users\igor_\source\repos\ExpertSystems\ExpertSystems\bin\Debug\System.ValueTuple.xml
