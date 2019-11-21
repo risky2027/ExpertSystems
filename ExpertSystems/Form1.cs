@@ -17,7 +17,9 @@ namespace ExpertSystems
         JournalContext db;
 
         List<JournalPositionInAlgorithm> listWorst = new List<JournalPositionInAlgorithm>(); //элементы в списке хуже нормальных
+        List<JournalPositionInAlgorithm> listWorstNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке ниже нормальных (хуже)
         List<JournalPositionInAlgorithm> listNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке норм
+        List<JournalPositionInAlgorithm> listBestNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке ниже нормальных (лучше)
         List<JournalPositionInAlgorithm> listBest = new List<JournalPositionInAlgorithm>(); //элементы в списке лучше нормальных
 
         public Form1()
@@ -196,31 +198,108 @@ namespace ExpertSystems
                             });
                         }
                     }
-                    for (int r = 0; r < listA.Count; r++)
+                    for (int j = 0; j < listA.Count; j++)
                     {
-                        if (!listNorm.Contains(listA[r]))
+                        if (!listNorm.Contains(listA[j]))
                         {
-                            if (listA[r].PositionInAlgorithm < listNorm[0].PositionInAlgorithm)
+                            if (listA[j].PositionInAlgorithm < listNorm[0].PositionInAlgorithm)
                             {
-                                listWorst.Add(listA[r]);
+                                listWorst.Add(listA[j]);
                             }
-                            else if (listA[r].PositionInAlgorithm > listNorm[0].PositionInAlgorithm)
+                            else if (listA[j].PositionInAlgorithm > listNorm[0].PositionInAlgorithm)
                             {
-                                listBest.Add(listA[r]);
+                                listBest.Add(listA[j]);
                             }
                         }
                     }
+
+                    //разделение listNorm с учетом дельты
+                    double delta = 0.5;
+                    double itemInListNorm = listNorm[0].PositionInAlgorithm;
+                    int k = 0;
+                    while (k < listWorst.Count)
+                    {
+                        if (itemInListNorm - delta <= listWorst[k].PositionInAlgorithm ||
+                            itemInListNorm + delta <= listWorst[k].PositionInAlgorithm)
+                        {
+                            listNorm.Add(listWorst[k]);
+                            listWorst.RemoveAt(k);
+                        }
+                        else
+                            k++;
+                    }
+
+                    while (k < listBest.Count)
+                    {
+                        if (itemInListNorm - delta >= listBest[k].PositionInAlgorithm ||
+                            itemInListNorm + delta >= listBest[k].PositionInAlgorithm)
+                        {
+                            listNorm.Add(listBest[k]);
+                            listBest.RemoveAt(k);
+                        }
+                        else
+                            k++;
+                    }
                 }
             }
+
+            //разделение listWorst на 2 класса
+            double alpha = 0.5;
+            listWorst.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
+            double itemInListWorst = listWorst[listWorst.Count - 1].PositionInAlgorithm;
+            int r = 0;
+            while (r < listWorst.Count)
+            {
+                if (itemInListWorst - alpha <= listWorst[r].PositionInAlgorithm ||
+                    itemInListWorst + alpha <= listWorst[r].PositionInAlgorithm)
+                {
+                    listWorstNorm.Add(listWorst[r]);
+                    listWorst.RemoveAt(r);
+                }
+                else
+                    r++;
+            }
+
+            //разделение listBest на 2 класса
+            alpha = 0.5;
+            listBest.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
+            double itemInListBest = listBest[0].PositionInAlgorithm;
+            r = 0;
+            while (r < listBest.Count)
+            {
+                if (itemInListBest - alpha >= listBest[r].PositionInAlgorithm ||
+                    itemInListBest + alpha >= listBest[r].PositionInAlgorithm)
+                {
+                    listBestNorm.Add(listBest[r]);
+                    listBest.RemoveAt(r);
+                }
+                else
+                    r++;
+            }
+
+            //сортировка листов или так list = list.OrderBy(obj => obj.Name_sub).ToList();
+            listWorst.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
+            listNorm.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
+            listBest.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
+            listWorstNorm.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
+            listBestNorm.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
         }
 
+        private void ClearAllLists()
+        {
+            listNorm.Clear();
+            listWorst.Clear();
+            listBest.Clear();
+            listBestNorm.Clear();
+            listWorstNorm.Clear();
+        }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            listBest.Clear();
+            ClearAllLists();
             RateJournals();
 
-            dataGridView1.DataSource = listBest.OrderBy(x => x.PositionInAlgorithm, OrderByDirection.Ascending).ToList(); ;
+            dataGridView1.DataSource = listBest;
 
             dataGridView1.Columns[0].HeaderText = "Название журнала";
             dataGridView1.Columns[1].HeaderText = "Место журнала в рейтинге по алгоритму";
@@ -232,7 +311,7 @@ namespace ExpertSystems
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            listNorm.Clear();
+            ClearAllLists();
             RateJournals();
 
             dataGridView1.DataSource = listNorm;
@@ -248,10 +327,10 @@ namespace ExpertSystems
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            listWorst.Clear();
+            ClearAllLists();
             RateJournals();
 
-            dataGridView1.DataSource = listWorst.OrderBy(x => x.PositionInAlgorithm, OrderByDirection.Ascending).ToList();
+            dataGridView1.DataSource = listWorst;
 
             dataGridView1.Columns[0].HeaderText = "Название журнала";
             dataGridView1.Columns[1].HeaderText = "Место журнала в рейтинге по алгоритму";
@@ -282,6 +361,36 @@ namespace ExpertSystems
             button1.Enabled = true;
             button2.Enabled = true;
             button3.Enabled = true;
+        }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            ClearAllLists();
+            RateJournals();
+
+            dataGridView1.DataSource = listBestNorm;
+
+            dataGridView1.Columns[0].HeaderText = "Название журнала";
+            dataGridView1.Columns[1].HeaderText = "Место журнала в рейтинге по алгоритму";
+
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            ClearAllLists();
+            RateJournals();
+
+            dataGridView1.DataSource = listWorstNorm;
+
+            dataGridView1.Columns[0].HeaderText = "Название журнала";
+            dataGridView1.Columns[1].HeaderText = "Место журнала в рейтинге по алгоритму";
+
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
         }
     }
 }

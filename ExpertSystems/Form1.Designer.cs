@@ -36,6 +36,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,18 +95,18 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Cross;
             this.button4.Location = new System.Drawing.Point(12, 351);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(269, 38);
+            this.button4.Size = new System.Drawing.Size(281, 38);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Вывести рейтинг хороших журналов";
+            this.button4.Text = "Вывести рейтинг лучших журналов";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button5
             // 
             this.button5.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.button5.Location = new System.Drawing.Point(12, 395);
+            this.button5.Location = new System.Drawing.Point(12, 439);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(269, 38);
+            this.button5.Size = new System.Drawing.Size(281, 38);
             this.button5.TabIndex = 5;
             this.button5.Text = "Вывести рейтинг средних журналов";
             this.button5.UseVisualStyleBackColor = true;
@@ -113,9 +115,9 @@
             // button6
             // 
             this.button6.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.button6.Location = new System.Drawing.Point(12, 439);
+            this.button6.Location = new System.Drawing.Point(12, 527);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(269, 38);
+            this.button6.Size = new System.Drawing.Size(281, 38);
             this.button6.TabIndex = 6;
             this.button6.Text = "Вывести рейтинг плохих журналов";
             this.button6.UseVisualStyleBackColor = true;
@@ -126,17 +128,41 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Cross;
             this.button7.Location = new System.Drawing.Point(298, 351);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(269, 38);
+            this.button7.Size = new System.Drawing.Size(281, 38);
             this.button7.TabIndex = 7;
             this.button7.Text = "Вывести общий рейтинг журналов";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.button8.Location = new System.Drawing.Point(12, 395);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(281, 38);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Вывести рейтинг хороших журналов";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.button9.Location = new System.Drawing.Point(12, 483);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(281, 38);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "Вывести рейтинг умеренных журналов";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 494);
+            this.ClientSize = new System.Drawing.Size(982, 576);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -163,6 +189,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 
