@@ -19,7 +19,7 @@ namespace ExpertSystems
         List<JournalPositionInAlgorithm> listWorst = new List<JournalPositionInAlgorithm>(); //элементы в списке хуже нормальных
         List<JournalPositionInAlgorithm> listWorstNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке ниже нормальных (хуже)
         List<JournalPositionInAlgorithm> listNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке норм
-        List<JournalPositionInAlgorithm> listBestNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке ниже нормальных (лучше)
+        List<JournalPositionInAlgorithm> listBestNorm = new List<JournalPositionInAlgorithm>(); //элементы в списке выше нормальных (лучше)
         List<JournalPositionInAlgorithm> listBest = new List<JournalPositionInAlgorithm>(); //элементы в списке лучше нормальных
 
         public Form1()
@@ -214,7 +214,7 @@ namespace ExpertSystems
                     }
 
                     //разделение listNorm с учетом дельты
-                    double delta = 0.5;
+                    double delta = 1;
                     double itemInListNorm = listNorm[0].PositionInAlgorithm;
                     int k = 0;
                     while (k < listWorst.Count)
@@ -244,7 +244,7 @@ namespace ExpertSystems
             }
 
             //разделение listWorst на 2 класса
-            double alpha = 0.5;
+            double alpha = 1;
             listWorst.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
             double itemInListWorst = listWorst[listWorst.Count - 1].PositionInAlgorithm;
             int r = 0;
@@ -261,7 +261,7 @@ namespace ExpertSystems
             }
 
             //разделение listBest на 2 класса
-            alpha = 0.5;
+            alpha = 1;
             listBest.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
             double itemInListBest = listBest[0].PositionInAlgorithm;
             r = 0;
