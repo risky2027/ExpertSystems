@@ -97,7 +97,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(300, 38);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Вывести рейтинг лучших журналов";
+            this.button4.Text = "Журналы международного уровня";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
@@ -108,7 +108,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(300, 38);
             this.button5.TabIndex = 5;
-            this.button5.Text = "Вывести рейтинг средних журналов";
+            this.button5.Text = "Журналы среднего уровня";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
@@ -119,7 +119,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(300, 38);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Вывести рейтинг плохих журналов";
+            this.button6.Text = "Ненаучные журналы";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
@@ -130,7 +130,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(300, 38);
             this.button7.TabIndex = 7;
-            this.button7.Text = "Вывести общий рейтинг журналов";
+            this.button7.Text = "Общий рейтинг журналов";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
@@ -141,7 +141,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(300, 38);
             this.button8.TabIndex = 8;
-            this.button8.Text = "Вывести рейтинг хороших журналов";
+            this.button8.Text = "Журналы высокого уровня";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
@@ -152,7 +152,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(300, 38);
             this.button9.TabIndex = 9;
-            this.button9.Text = "Вывести рейтинг умеренных журналов";
+            this.button9.Text = "Журналы низкого уровня";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 

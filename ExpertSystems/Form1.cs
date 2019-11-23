@@ -45,6 +45,8 @@ namespace ExpertSystems
         private void Button1_Click(object sender, EventArgs e)
         {
             AddJournalForm addJFrom = new AddJournalForm();
+
+            addJFrom.Text = "Добавление журнала";
             DialogResult result = addJFrom.ShowDialog(this);
 
             if (result == DialogResult.Cancel)
@@ -70,7 +72,7 @@ namespace ExpertSystems
                 journal.PositionInScienceIndex = k;
 
             journal.PositionInAlgorithm = Math.Round(Int32.Parse(addJFrom.textBox2.Text) / Double.Parse(addJFrom.textBox4.Text) /
-                Double.Parse(addJFrom.textBox3.Text) + 10 * Double.Parse(addJFrom.textBox5.Text) + Double.Parse(addJFrom.textBox6.Text), 2);
+                Double.Parse(addJFrom.textBox3.Text) + 10 * Double.Parse(addJFrom.textBox5.Text) + Double.Parse(addJFrom.textBox6.Text), 1);
 
             db.Journals.Add(journal);
             db.SaveChanges();
@@ -92,6 +94,7 @@ namespace ExpertSystems
 
                 AddJournalForm addJFrom = new AddJournalForm();
 
+                addJFrom.Text = "Изменение журнала";
                 addJFrom.textBox1.Text = journal.NameOfJournal.ToString();
                 addJFrom.textBox2.Text = journal.SumNumbersOfCitations.ToString();
                 addJFrom.textBox3.Text = journal.SumNumbersOfArticles.ToString();
@@ -123,7 +126,7 @@ namespace ExpertSystems
                     journal.PositionInScienceIndex = k;
 
                 journal.PositionInAlgorithm = Math.Round(Int32.Parse(addJFrom.textBox2.Text) / Double.Parse(addJFrom.textBox4.Text) /
-                Double.Parse(addJFrom.textBox3.Text) + 10 * Double.Parse(addJFrom.textBox5.Text) + Double.Parse(addJFrom.textBox6.Text), 2);
+                Double.Parse(addJFrom.textBox3.Text) + 10 * Double.Parse(addJFrom.textBox5.Text) + Double.Parse(addJFrom.textBox6.Text), 1);
 
                 db.SaveChanges();
                 dataGridView1.Refresh(); // обновляем грид
@@ -214,7 +217,7 @@ namespace ExpertSystems
                     }
 
                     //разделение listNorm с учетом дельты
-                    double delta = 1;
+                    double delta = 0.5;
                     double itemInListNorm = listNorm[0].PositionInAlgorithm;
                     int k = 0;
                     while (k < listWorst.Count)
@@ -244,7 +247,7 @@ namespace ExpertSystems
             }
 
             //разделение listWorst на 2 класса
-            double alpha = 1;
+            double alpha = 0.5;
             listWorst.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
             double itemInListWorst = listWorst[listWorst.Count - 1].PositionInAlgorithm;
             int r = 0;
@@ -261,7 +264,7 @@ namespace ExpertSystems
             }
 
             //разделение listBest на 2 класса
-            alpha = 1;
+            alpha = 0.5;
             listBest.Sort((a, b) => a.PositionInAlgorithm.CompareTo(b.PositionInAlgorithm));
             double itemInListBest = listBest[0].PositionInAlgorithm;
             r = 0;
